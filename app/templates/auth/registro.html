@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de usuarios</title>
+</head>
+<body>
+
+    <h1>Registro de usuarios</h1>
+
+    {% with mensajes = get_flashed_messages(with_categories=true) %}
+        {% for categoria, mensaje in mensajes %}
+            <p>{{ mensaje }}</p>
+        {% endfor %}
+    {% endwith %}
+
+    <form method="POST">
+
+        <label>Nombre completo:</label>
+        <input type="text" name="nombre" required>
+
+        <br><br>
+
+        <label>Correo electrónico:</label>
+        <input type="email" name="correo" required>
+
+        <br><br>
+
+        <label>Contraseña:</label>
+        <input type="password" name="password" required>
+
+        <br><br>
+
+        <button type="submit">Registrarme</button>
+
+    </form>
+
+    <p>
+        ¿Ya tienes cuenta?
+        <a href="{{ url_for('auth.login') }}">Iniciar sesión</a>
+    </p>
+
+    <a href="{{ url_for('inicio') }}">Volver al inicio</a>
+
+</body>
+</html>
